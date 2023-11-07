@@ -80,6 +80,7 @@ else
 	echo "\$loadgame (\"${loadgame}\") not set, starting new game"
         su -l openttd -c "/usr/share/games/openttd/openttd -D -x"
 fi
-
+echo "sleep 5"
 sleep 5
+echo "exit"
 exit 0
