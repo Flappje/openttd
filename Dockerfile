@@ -17,5 +17,4 @@ VOLUME /home/openttd/.openttd
 EXPOSE 3979/tcp
 EXPOSE 3979/udp
 
-STOPSIGNAL 3
 ENTRYPOINT [ "/openttd.sh" ]
