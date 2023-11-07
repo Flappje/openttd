@@ -20,7 +20,7 @@ jobs:
         id: get_versions
         # yamllint disable-line rule:line-length
         run: |
-          versions=$(curl -s -H 'Accept: application/vnd.github.v3+json' https://api.github.com/repos/OpenTTD/OpenTTD/releases | jq -cMr '[.[:10]|.[]|.tag_name]')
+          versions=$(curl -s -H 'Accept: application/vnd.github.v3+json' https://api.github.com/repos/OpenTTD/OpenTTD/releases | jq -cMr '[.[:1]|.[]|.tag_name]')
           latest=$(curl -s -H 'Accept: application/vnd.github.v3+json' https://api.github.com/repos/OpenTTD/OpenTTD/releases | jq -cMr '([.[]|select(all(.tag_name; contains("beta")|not))])|.[:1]|.[].tag_name')
 
           echo "versions=${versions}" >> $GITHUB_OUTPUT
