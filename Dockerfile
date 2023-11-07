@@ -18,5 +18,4 @@ EXPOSE 3979/tcp
 EXPOSE 3979/udp
 
 STOPSIGNAL 3
-ENTRYPOINT [ "/usr/bin/dumb-init", "--rewrite", "15:3", "--rewrite", "9:3", "--" ]
-CMD [ "/openttd.sh" ]
+ENTRYPOINT [ "/openttd.sh" ]
