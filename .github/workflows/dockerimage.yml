@@ -2,15 +2,13 @@
 name: Docker Image CI
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
   push:
     branches: [master]
   workflow_dispatch:
     branches: [master]
 
 env:
-  DOCKER_REPO_NAME: bateau
+  DOCKER_REPO_NAME: flappje
   DOCKER_IMAGE_NAME: openttd
 
 jobs:
