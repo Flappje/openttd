@@ -53,59 +53,33 @@ if [ ${LOADGAME_CHECK} != "x" ]; then
 
         case ${loadgame} in
                 'true')
-                        if [ -f  ${savegame} ]; then
-                                echo "We are loading a save game!"
-                                echo "Lets load ${savegame}"
-                                su -l openttd -c "/usr/share/games/openttd/openttd -D -g ${savegame} -x -d ${DEBUG}"
-                                exit 0
-                        else
-                                echo "${savegame} not found..."
-                                exit 0
-                        fi
                 ;;
                 'false')
-                        echo "Creating a new game."
-                        su -l openttd -c "/usr/share/games/openttd/openttd -D -x -d ${DEBUG}"
-                        exit 0
                 ;;
                 'last-autosave')
-
 			savegame=${savepath}/autosave/`ls -rt ${savepath}/autosave/ | tail -n1`
-
-			if [ -r ${savegame} ]; then
-	                        echo "Loading ${savegame}"
-        	                su -l openttd -c "/usr/share/games/openttd/openttd -D -g ${savegame} -x -d ${DEBUG}"
-                	        exit 0
-			else
-				echo "${savegame} not found..."
-	                        echo "Creating a new game."
-	                        su -l openttd -c "/usr/share/games/openttd/openttd -D -x -d ${DEBUG}"
-	                        exit 0
-			fi
                 ;;
                 'exit')
-
 			savegame="${savepath}/autosave/exit.sav"
-
-			if [ -r ${savegame} ]; then
-	                        echo "Loading ${savegame}"
-        	                su -l openttd -c "/usr/share/games/openttd/openttd -D -g ${savegame} -x -d ${DEBUG}"
-                	        exit 0
-			else
-				echo "${savegame} not found..."
-				echo "Creating a new game."
-                        	su -l openttd -c "/usr/share/games/openttd/openttd -D -x -d ${DEBUG}"
-                        	exit 0
-			fi
-                ;;
+ 	        ;;
 		*)
 			echo "ambigous loadgame (\"${loadgame}\") statement inserted."
 			exit 1
 		;;
         esac
+	if [ -f  ${savegame} ]; then
+		echo "We are loading a save game!"
+		echo "Lets load ${savegame}"
+		su -l openttd -c "/usr/share/games/openttd/openttd -D -g ${savegame} -x -d ${DEBUG}"
+ 	else 
+		echo "${savegame} not found..."
+		echo "Creating a new game."
+		su -l openttd -c "/usr/share/games/openttd/openttd -D -x -d ${DEBUG}"
+	fi
 else
 	echo "\$loadgame (\"${loadgame}\") not set, starting new game"
         su -l openttd -c "/usr/share/games/openttd/openttd -D -x"
-	sleep 5
-        exit 0
 fi
+
+sleep 5
+exit 0
