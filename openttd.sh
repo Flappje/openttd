@@ -106,5 +106,6 @@ if [ ${LOADGAME_CHECK} != "x" ]; then
 else
 	echo "\$loadgame (\"${loadgame}\") not set, starting new game"
         su -l openttd -c "/usr/share/games/openttd/openttd -D -x"
+	sleep 5
         exit 0
 fi
