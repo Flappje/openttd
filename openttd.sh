@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 old_openttd_dir="/home/openttd/.openttd"
 new_openttd_dir="/home/openttd/.local/share/openttd"
