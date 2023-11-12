@@ -14,8 +14,8 @@ fi
 
 savegame="${savepath}/${savename}"
 FLAGS=(\
-  -D\
-  -x\
+  -D \
+  -x \
 )
 
 # Loads the desired game, or prepare to load it next time server starts up!
