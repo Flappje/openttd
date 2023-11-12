@@ -20,7 +20,9 @@ FLAGS=(\
 
 # Loads the desired game, or prepare to load it next time server starts up!
 if   [ ${loadgame} = "true" ]; then
+  echo "loadgame = true"
 elif [ ${loadgame} = "false" ]; then
+  echo "loadgame = flase"
 elif [ ${loadgame} = "last-autosave" ]; then
   savegame=${savepath}/autosave/`ls -rt ${savepath}/autosave/ | tail -n1`
   echo "using savegame: ${savegame}"
